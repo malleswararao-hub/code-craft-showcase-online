@@ -13,9 +13,12 @@ export const Hero = () => {
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
-            Java Fullstack Developer
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Hi, I'm <span className="bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">Duggineni Malleswararao</span>
           </h1>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-teal-400 to-blue-400 bg-clip-text text-transparent">
+            Java Fullstack Developer
+          </h2>
           <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Crafting robust, scalable applications with modern Java technologies and cutting-edge frontend frameworks
           </p>

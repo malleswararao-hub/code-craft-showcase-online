@@ -37,7 +37,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium">Email</p>
-                  <p className="text-slate-300">your.email@example.com</p>
+                  <p className="text-slate-300">malleswararao.duggineni@gmail.com</p>
                 </div>
               </div>
               
@@ -47,7 +47,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium">Phone</p>
-                  <p className="text-slate-300">+1 (555) 123-4567</p>
+                  <p className="text-slate-300">+91 XXXXX XXXXX</p>
                 </div>
               </div>
               
@@ -57,7 +57,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-white font-medium">Location</p>
-                  <p className="text-slate-300">Your City, Country</p>
+                  <p className="text-slate-300">India</p>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@ export const Contact = () => {
       
       <footer className="mt-20 pt-8 border-t border-slate-700/50 text-center">
         <p className="text-slate-400">
-          © 2024 Your Name. Built with React, TypeScript, and Tailwind CSS.
+          © 2024 Duggineni Malleswararao. Built with React, TypeScript, and Tailwind CSS.
         </p>
       </footer>
     </section>

@@ -21,7 +21,7 @@ export const Experience = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4" />
-                  <span>Your Company Name</span>
+                  <span>Software Development Company</span>
                 </div>
               </div>
             </CardHeader>
