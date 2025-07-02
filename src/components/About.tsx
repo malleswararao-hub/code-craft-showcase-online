@@ -27,26 +27,26 @@ export const About = () => {
           </Card>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-gradient-to-br from-blue-900/30 to-slate-800/30 border-blue-700/50 hover:scale-105 transition-transform duration-300">
+            <Card className="bg-gradient-to-br from-emerald-900/40 to-teal-900/40 border-emerald-600/50 hover:scale-105 hover:border-emerald-500 transition-all duration-300 shadow-lg hover:shadow-emerald-500/20">
               <CardContent className="p-6 text-center">
-                <Server className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-blue-400">Backend Development</h3>
+                <Server className="w-12 h-12 text-emerald-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2 text-emerald-300">Backend Development</h3>
                 <p className="text-slate-300">Robust server-side applications with Java, Spring Boot, and microservices architecture</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-teal-900/30 to-slate-800/30 border-teal-700/50 hover:scale-105 transition-transform duration-300">
+            <Card className="bg-gradient-to-br from-violet-900/40 to-purple-900/40 border-violet-600/50 hover:scale-105 hover:border-violet-500 transition-all duration-300 shadow-lg hover:shadow-violet-500/20">
               <CardContent className="p-6 text-center">
-                <Code className="w-12 h-12 text-teal-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-teal-400">Frontend Development</h3>
+                <Code className="w-12 h-12 text-violet-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2 text-violet-300">Frontend Development</h3>
                 <p className="text-slate-300">Modern, responsive user interfaces using React, Angular, and modern CSS frameworks</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-purple-900/30 to-slate-800/30 border-purple-700/50 hover:scale-105 transition-transform duration-300">
+            <Card className="bg-gradient-to-br from-amber-900/40 to-orange-900/40 border-amber-600/50 hover:scale-105 hover:border-amber-500 transition-all duration-300 shadow-lg hover:shadow-amber-500/20">
               <CardContent className="p-6 text-center">
-                <Database className="w-12 h-12 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2 text-purple-400">Database Management</h3>
+                <Database className="w-12 h-12 text-amber-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2 text-amber-300">Database Management</h3>
                 <p className="text-slate-300">Efficient data modeling and optimization with SQL and NoSQL databases</p>
               </CardContent>
             </Card>
