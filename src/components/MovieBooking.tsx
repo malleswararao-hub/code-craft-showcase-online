@@ -32,7 +32,10 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
   const occupiedSeats = ['A5', 'A6', 'B3', 'C7', 'C8', 'D1', 'F9', 'F10', 'H5'];
 
   const handleSeatClick = (seat: string) => {
-    if (occupiedSeats.includes(seat)) return;
+    // Block occupied seats from being selected
+    if (occupiedSeats.includes(seat)) {
+      return;
+    }
     
     if (selectedSeats.includes(seat)) {
       setSelectedSeats(selectedSeats.filter(s => s !== seat));
@@ -43,12 +46,12 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
 
   const getSeatClass = (seat: string) => {
     if (occupiedSeats.includes(seat)) {
-      return "bg-red-600 cursor-not-allowed";
+      return "bg-red-600 cursor-not-allowed opacity-75";
     }
     if (selectedSeats.includes(seat)) {
-      return "bg-green-600 hover:bg-green-700";
+      return "bg-green-600 hover:bg-green-700 cursor-pointer";
     }
-    return "bg-slate-600 hover:bg-slate-500";
+    return "bg-slate-600 hover:bg-slate-500 cursor-pointer";
   };
 
   const handleBooking = () => {
@@ -139,7 +142,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-red-600 rounded"></div>
-                  <span className="text-slate-400">Occupied</span>
+                  <span className="text-slate-400">Booked</span>
                 </div>
               </div>
             </CardHeader>
@@ -153,7 +156,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
 
               {/* Seats Grid */}
               <div className="grid grid-cols-12 gap-2 max-w-2xl mx-auto">
-                {seats.map((seat, index) => (
+                {seats.map((seat) => (
                   <button
                     key={seat}
                     onClick={() => handleSeatClick(seat)}
