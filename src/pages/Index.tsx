@@ -27,6 +27,7 @@ const Index = () => {
   const [currentView, setCurrentView] = useState<'movies' | 'booking' | 'confirmation'>('movies');
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [bookingData, setBookingData] = useState<BookingData | null>(null);
+  const [allBookedSeats, setAllBookedSeats] = useState<string[]>([]);
 
   const handleMovieSelect = (movie: Movie) => {
     setSelectedMovie(movie);
@@ -35,6 +36,8 @@ const Index = () => {
 
   const handleBookingComplete = (booking: BookingData) => {
     setBookingData(booking);
+    // Add the newly booked seats to the list of all booked seats
+    setAllBookedSeats(prev => [...prev, ...booking.seats]);
     setCurrentView('confirmation');
   };
 
@@ -68,6 +71,7 @@ const Index = () => {
           movie={selectedMovie} 
           onBookingComplete={handleBookingComplete}
           onBack={handleBackToMovies}
+          bookedSeats={allBookedSeats}
         />
       )}
 

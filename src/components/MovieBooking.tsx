@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,9 +8,10 @@ interface MovieBookingProps {
   movie: Movie;
   onBookingComplete: (booking: BookingData) => void;
   onBack: () => void;
+  bookedSeats?: string[]; // Add prop for previously booked seats
 }
 
-export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingProps) => {
+export const MovieBooking = ({ movie, onBookingComplete, onBack, bookedSeats = [] }: MovieBookingProps) => {
   const [selectedShowtime, setSelectedShowtime] = useState<string>("");
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
@@ -30,10 +30,13 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
 
   const seats = generateSeats();
   const occupiedSeats = ['A5', 'A6', 'B3', 'C7', 'C8', 'D1', 'F9', 'F10', 'H5'];
+  
+  // Combine pre-occupied seats with previously booked seats
+  const allBlockedSeats = [...occupiedSeats, ...bookedSeats];
 
   const handleSeatClick = (seat: string) => {
     // Block occupied seats from being selected
-    if (occupiedSeats.includes(seat)) {
+    if (allBlockedSeats.includes(seat)) {
       return;
     }
     
@@ -45,7 +48,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
   };
 
   const getSeatClass = (seat: string) => {
-    if (occupiedSeats.includes(seat)) {
+    if (allBlockedSeats.includes(seat)) {
       return "bg-red-600 cursor-not-allowed opacity-75";
     }
     if (selectedSeats.includes(seat)) {
@@ -69,6 +72,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
 
   return (
     <div className="container mx-auto px-6 py-8">
+      
       <Button 
         onClick={onBack} 
         variant="ghost" 
@@ -79,7 +83,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
       </Button>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Movie Info */}
+        
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader>
             <CardTitle className="text-white">{movie.title}</CardTitle>
@@ -104,9 +108,8 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
           </CardContent>
         </Card>
 
-        {/* Booking Details */}
+        
         <div className="lg:col-span-2 space-y-6">
-          {/* Showtime Selection */}
           <Card className="bg-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white">Select Showtime</CardTitle>
@@ -127,7 +130,6 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
             </CardContent>
           </Card>
 
-          {/* Seat Selection */}
           <Card className="bg-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white">Select Seats</CardTitle>
@@ -147,21 +149,19 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
               </div>
             </CardHeader>
             <CardContent>
-              {/* Screen */}
               <div className="text-center mb-8">
                 <div className="bg-slate-700 text-white py-2 px-8 rounded-lg inline-block">
                   SCREEN
                 </div>
               </div>
 
-              {/* Seats Grid */}
               <div className="grid grid-cols-12 gap-2 max-w-2xl mx-auto">
                 {seats.map((seat) => (
                   <button
                     key={seat}
                     onClick={() => handleSeatClick(seat)}
                     className={`w-8 h-8 rounded text-xs font-medium transition-colors ${getSeatClass(seat)}`}
-                    disabled={occupiedSeats.includes(seat)}
+                    disabled={allBlockedSeats.includes(seat)}
                   >
                     {seat}
                   </button>
@@ -170,7 +170,7 @@ export const MovieBooking = ({ movie, onBookingComplete, onBack }: MovieBookingP
             </CardContent>
           </Card>
 
-          {/* Booking Summary */}
+          
           <Card className="bg-slate-800 border-slate-700">
             <CardHeader>
               <CardTitle className="text-white">Booking Summary</CardTitle>
