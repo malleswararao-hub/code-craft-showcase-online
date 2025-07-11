@@ -28,23 +28,25 @@ export const ProfileOne = () => {
   };
 
   return (
-    <Card className="max-w-md mx-auto bg-card border-border">
-      <CardHeader className="text-center">
-        <div className="w-20 h-20 mx-auto mb-4">
+    <Card className="max-w-lg mx-auto bg-card border border-border shadow-lg">
+      <CardHeader className="text-center pb-4 border-b border-border">
+        <div className="w-24 h-24 mx-auto mb-6">
           <img 
             src={profileData.avatar} 
             alt={`${profileData.name} avatar`}
-            className="w-full h-full rounded-full object-cover border-2 border-primary"
+            className="w-full h-full rounded-full object-cover border-4 border-muted shadow-md"
           />
         </div>
-        <CardTitle className="text-foreground">{profileData.name}</CardTitle>
-        <p className="text-muted-foreground">{profileData.role}</p>
-        <p className="text-sm text-muted-foreground">{profileData.department} Department</p>
+        <CardTitle className="text-2xl text-foreground font-serif mb-2">{profileData.name}</CardTitle>
+        <p className="text-lg text-muted-foreground font-medium">{profileData.role}</p>
+        <p className="text-sm text-muted-foreground uppercase tracking-wide">{profileData.department} Department</p>
       </CardHeader>
       
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="status-message">Status Message</Label>
+      <CardContent className="pt-6 space-y-6">
+        <div className="space-y-3">
+          <Label htmlFor="status-message" className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            Status Message
+          </Label>
           <Input
             id="status-message"
             type="text"
@@ -52,31 +54,34 @@ export const ProfileOne = () => {
             onChange={handleStatusChange}
             disabled={!isEditing}
             placeholder="Enter your status..."
-            className="w-full"
+            className="w-full border-2 focus:border-primary transition-all duration-200"
           />
         </div>
         
-        <div className="flex gap-2">
+        <div className="flex gap-3 pt-2">
           <Button 
             onClick={() => setIsEditing(!isEditing)}
-            variant={isEditing ? "destructive" : "default"}
-            className="flex-1"
+            variant={isEditing ? "outline" : "default"}
+            className="flex-1 font-medium"
           >
             {isEditing ? "Cancel" : "Edit Status"}
           </Button>
           
           <Button
             disabled={!isEditing}
-            variant="outline"
-            className="flex-1"
+            variant="secondary"
+            className="flex-1 font-medium"
             onClick={() => setIsEditing(false)}
           >
-            Save
+            Save Changes
           </Button>
         </div>
         
-        <div className="text-sm text-muted-foreground">
-          Current Status: <span className="text-foreground font-medium">{statusMessage}</span>
+        <div className="pt-4 border-t border-border">
+          <div className="text-center">
+            <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">Current Status</p>
+            <p className="text-foreground font-medium italic">"{statusMessage}"</p>
+          </div>
         </div>
       </CardContent>
     </Card>
